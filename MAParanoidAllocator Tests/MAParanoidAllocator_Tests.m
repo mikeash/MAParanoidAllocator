@@ -68,4 +68,14 @@ static BOOL Write(void *ptr, char value) {
     }];
 }
 
+- (void)testReadProtection {
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: 1];
+    __block const void *ptr;
+    [allocator read: ^(const void *param) {
+        XCTAssertEqual(Read(param), 0, @"Didn't get the expected value from a fresh allocator");
+        ptr = param;
+    }];
+    XCTAssertEqual(Read(ptr), -1, @"Shouldn't be able to read from the pointer outside of the block");
+}
+
 @end
