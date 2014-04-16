@@ -12,6 +12,8 @@
 		C210637E18FE021400BEF4B7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C210637D18FE021400BEF4B7 /* XCTest.framework */; };
 		C210638418FE021400BEF4B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C210638218FE021400BEF4B7 /* InfoPlist.strings */; };
 		C210638618FE021400BEF4B7 /* MAParanoidAllocator_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C210638518FE021400BEF4B7 /* MAParanoidAllocator_Tests.m */; };
+		C210638F18FE02C500BEF4B7 /* MAParanoidAllocator.m in Sources */ = {isa = PBXBuildFile; fileRef = C210638E18FE02C500BEF4B7 /* MAParanoidAllocator.m */; };
+		C210639018FE04AC00BEF4B7 /* MAParanoidAllocator.m in Sources */ = {isa = PBXBuildFile; fileRef = C210638E18FE02C500BEF4B7 /* MAParanoidAllocator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		C210638118FE021400BEF4B7 /* MAParanoidAllocator Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MAParanoidAllocator Tests-Info.plist"; sourceTree = "<group>"; };
 		C210638318FE021400BEF4B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C210638518FE021400BEF4B7 /* MAParanoidAllocator_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAParanoidAllocator_Tests.m; sourceTree = "<group>"; };
+		C210638D18FE02C500BEF4B7 /* MAParanoidAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAParanoidAllocator.h; sourceTree = "<group>"; };
+		C210638E18FE02C500BEF4B7 /* MAParanoidAllocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAParanoidAllocator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				C210636D18FE010D00BEF4B7 /* main.m */,
+				C210638D18FE02C500BEF4B7 /* MAParanoidAllocator.h */,
+				C210638E18FE02C500BEF4B7 /* MAParanoidAllocator.m */,
 			);
 			path = MAParanoidAllocator;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C210636E18FE010D00BEF4B7 /* main.m in Sources */,
+				C210638F18FE02C500BEF4B7 /* MAParanoidAllocator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C210639018FE04AC00BEF4B7 /* MAParanoidAllocator.m in Sources */,
 				C210638618FE021400BEF4B7 /* MAParanoidAllocator_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
