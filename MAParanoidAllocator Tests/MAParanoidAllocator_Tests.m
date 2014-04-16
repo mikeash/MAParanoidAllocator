@@ -26,4 +26,17 @@
     XCTAssertEqual([allocator size], (size_t)99999, @"Unexpected size after resizing allocator");
 }
 
+- (void)testAccess {
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: 1];
+    [allocator read: ^(const void *ptr) {
+        XCTAssertEqual(*(const char *)ptr, (char)0, @"Newly allocated memory should be empty");
+    }];
+    [allocator write: ^(void *ptr) {
+        *(char *)ptr = 1;
+    }];
+    [allocator read: ^(const void *ptr) {
+        XCTAssertEqual(*(const char *)ptr, (char)1, @"Memory write didn't show up");
+    }];
+}
+
 @end
