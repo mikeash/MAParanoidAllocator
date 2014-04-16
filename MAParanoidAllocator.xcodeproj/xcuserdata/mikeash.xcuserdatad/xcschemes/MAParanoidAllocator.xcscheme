@@ -28,6 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C210637B18FE021400BEF4B7"
+               BuildableName = "MAParanoidAllocator Tests.xctest"
+               BlueprintName = "MAParanoidAllocator Tests"
+               ReferencedContainer = "container:MAParanoidAllocator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

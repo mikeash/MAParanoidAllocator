@@ -9,8 +9,20 @@
 /* Begin PBXBuildFile section */
 		C210636B18FE010D00BEF4B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C210636A18FE010D00BEF4B7 /* Foundation.framework */; };
 		C210636E18FE010D00BEF4B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C210636D18FE010D00BEF4B7 /* main.m */; };
-		C210637218FE010D00BEF4B7 /* MAParanoidAllocator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C210637118FE010D00BEF4B7 /* MAParanoidAllocator.1 */; };
+		C210637E18FE021400BEF4B7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C210637D18FE021400BEF4B7 /* XCTest.framework */; };
+		C210638418FE021400BEF4B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C210638218FE021400BEF4B7 /* InfoPlist.strings */; };
+		C210638618FE021400BEF4B7 /* MAParanoidAllocator_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C210638518FE021400BEF4B7 /* MAParanoidAllocator_Tests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C210638818FE021400BEF4B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C210635F18FE010D00BEF4B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C210636618FE010D00BEF4B7;
+			remoteInfo = MAParanoidAllocator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C210636518FE010D00BEF4B7 /* CopyFiles */ = {
@@ -19,7 +31,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				C210637218FE010D00BEF4B7 /* MAParanoidAllocator.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -29,8 +40,11 @@
 		C210636718FE010D00BEF4B7 /* MAParanoidAllocator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MAParanoidAllocator; sourceTree = BUILT_PRODUCTS_DIR; };
 		C210636A18FE010D00BEF4B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C210636D18FE010D00BEF4B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C210637018FE010D00BEF4B7 /* MAParanoidAllocator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MAParanoidAllocator-Prefix.pch"; sourceTree = "<group>"; };
-		C210637118FE010D00BEF4B7 /* MAParanoidAllocator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MAParanoidAllocator.1; sourceTree = "<group>"; };
+		C210637C18FE021400BEF4B7 /* MAParanoidAllocator Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAParanoidAllocator Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C210637D18FE021400BEF4B7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C210638118FE021400BEF4B7 /* MAParanoidAllocator Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MAParanoidAllocator Tests-Info.plist"; sourceTree = "<group>"; };
+		C210638318FE021400BEF4B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C210638518FE021400BEF4B7 /* MAParanoidAllocator_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAParanoidAllocator_Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +56,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C210637918FE021400BEF4B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C210637E18FE021400BEF4B7 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -49,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				C210636C18FE010D00BEF4B7 /* MAParanoidAllocator */,
+				C210637F18FE021400BEF4B7 /* MAParanoidAllocator Tests */,
 				C210636918FE010D00BEF4B7 /* Frameworks */,
 				C210636818FE010D00BEF4B7 /* Products */,
 			);
@@ -58,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				C210636718FE010D00BEF4B7 /* MAParanoidAllocator */,
+				C210637C18FE021400BEF4B7 /* MAParanoidAllocator Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				C210636A18FE010D00BEF4B7 /* Foundation.framework */,
+				C210637D18FE021400BEF4B7 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -74,16 +99,24 @@
 			isa = PBXGroup;
 			children = (
 				C210636D18FE010D00BEF4B7 /* main.m */,
-				C210637118FE010D00BEF4B7 /* MAParanoidAllocator.1 */,
-				C210636F18FE010D00BEF4B7 /* Supporting Files */,
 			);
 			path = MAParanoidAllocator;
 			sourceTree = "<group>";
 		};
-		C210636F18FE010D00BEF4B7 /* Supporting Files */ = {
+		C210637F18FE021400BEF4B7 /* MAParanoidAllocator Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C210637018FE010D00BEF4B7 /* MAParanoidAllocator-Prefix.pch */,
+				C210638518FE021400BEF4B7 /* MAParanoidAllocator_Tests.m */,
+				C210638018FE021400BEF4B7 /* Supporting Files */,
+			);
+			path = "MAParanoidAllocator Tests";
+			sourceTree = "<group>";
+		};
+		C210638018FE021400BEF4B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C210638118FE021400BEF4B7 /* MAParanoidAllocator Tests-Info.plist */,
+				C210638218FE021400BEF4B7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -108,6 +141,24 @@
 			productReference = C210636718FE010D00BEF4B7 /* MAParanoidAllocator */;
 			productType = "com.apple.product-type.tool";
 		};
+		C210637B18FE021400BEF4B7 /* MAParanoidAllocator Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C210638A18FE021400BEF4B7 /* Build configuration list for PBXNativeTarget "MAParanoidAllocator Tests" */;
+			buildPhases = (
+				C210637818FE021400BEF4B7 /* Sources */,
+				C210637918FE021400BEF4B7 /* Frameworks */,
+				C210637A18FE021400BEF4B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C210638918FE021400BEF4B7 /* PBXTargetDependency */,
+			);
+			name = "MAParanoidAllocator Tests";
+			productName = "MAParanoidAllocator Tests";
+			productReference = C210637C18FE021400BEF4B7 /* MAParanoidAllocator Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -116,6 +167,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = mikeash;
+				TargetAttributes = {
+					C210637B18FE021400BEF4B7 = {
+						TestTargetID = C210636618FE010D00BEF4B7;
+					};
+				};
 			};
 			buildConfigurationList = C210636218FE010D00BEF4B7 /* Build configuration list for PBXProject "MAParanoidAllocator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -130,9 +186,21 @@
 			projectRoot = "";
 			targets = (
 				C210636618FE010D00BEF4B7 /* MAParanoidAllocator */,
+				C210637B18FE021400BEF4B7 /* MAParanoidAllocator Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C210637A18FE021400BEF4B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C210638418FE021400BEF4B7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C210636318FE010D00BEF4B7 /* Sources */ = {
@@ -143,7 +211,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C210637818FE021400BEF4B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C210638618FE021400BEF4B7 /* MAParanoidAllocator_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C210638918FE021400BEF4B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C210636618FE010D00BEF4B7 /* MAParanoidAllocator */;
+			targetProxy = C210638818FE021400BEF4B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C210638218FE021400BEF4B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C210638318FE021400BEF4B7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C210637318FE010D00BEF4B7 /* Debug */ = {
@@ -219,8 +314,6 @@
 		C210637618FE010D00BEF4B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MAParanoidAllocator/MAParanoidAllocator-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -228,9 +321,37 @@
 		C210637718FE010D00BEF4B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MAParanoidAllocator/MAParanoidAllocator-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C210638B18FE021400BEF4B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MAParanoidAllocator Tests/MAParanoidAllocator Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C210638C18FE021400BEF4B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MAParanoidAllocator Tests/MAParanoidAllocator Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -251,6 +372,14 @@
 			buildConfigurations = (
 				C210637618FE010D00BEF4B7 /* Debug */,
 				C210637718FE010D00BEF4B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C210638A18FE021400BEF4B7 /* Build configuration list for PBXNativeTarget "MAParanoidAllocator Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C210638B18FE021400BEF4B7 /* Debug */,
+				C210638C18FE021400BEF4B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
