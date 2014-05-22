@@ -106,7 +106,7 @@ static BOOL Write(void *ptr, char value) {
 - (void)testResizing {
     long pageSize = sysconf(_SC_PAGESIZE);
     unsigned short randBuf[3] = { 0, 0, 0 };
-    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: 1];
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] init];
     for(int i = 0; i < 1000; i++) {
         size_t newSize = (nrand48(randBuf) % 1000000) + 1;
         [allocator setSize: newSize];
