@@ -68,6 +68,9 @@
         }
         
         if(beforeSize > 0) {
+            [self write: ^(void *ptr) {
+                memset(ptr, 0, beforeSize);
+            }];
             size_t guardPagesSize = _pageSize * 2;
             size_t toDeallocate = beforeSize + guardPagesSize;
             char *pointerWithGuards = _memory - _pageSize;
