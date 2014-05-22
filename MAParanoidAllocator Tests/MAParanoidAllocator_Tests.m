@@ -78,4 +78,29 @@ static BOOL Write(void *ptr, char value) {
     XCTAssertEqual(Read(ptr), -1, @"Shouldn't be able to read from the pointer outside of the block");
 }
 
+- (void)testLeadingGuardPage {
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: 1];
+    [allocator read: ^(const void *ptr) {
+        XCTAssertEqual(Read(ptr), 0, @"Didn't get the expected value from a fresh allocator");
+        XCTAssertEqual(Read((const char *)ptr - 1), -1, @"Shouldn't be able to read the byte before an allocation");
+    }];
+    [allocator write: ^(void *ptr) {
+        XCTAssertTrue(Write(ptr, 1), @"Couldn't write to the first byte of the allocator");
+        XCTAssertFalse(Write((char *)ptr - 1, 1), @"Shouldn't be able to write to the byte before an allocation");
+    }];
+}
+
+- (void)testTrailingGuardPage {
+    long pageSize = sysconf(_SC_PAGESIZE);
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: pageSize];
+    [allocator read: ^(const void *ptr) {
+        XCTAssertEqual(Read((const char *)ptr + pageSize - 1), 0, @"Didn't get the expected value from the end of a page in a fresh allocator");
+        XCTAssertEqual(Read((const char *)ptr + pageSize), -1, @"Shouldn't be able to read from the page beyond an allocation");
+    }];
+    [allocator write: ^(void *ptr) {
+        XCTAssertTrue(Write((char *)ptr + pageSize - 1, 1), @"Couldn't write to the end of the allocated page");
+        XCTAssertFalse(Write((char *)ptr + pageSize, 1), @"Shouldn't be able to write to the page beyond an allocation");
+    }];
+}
+
 @end

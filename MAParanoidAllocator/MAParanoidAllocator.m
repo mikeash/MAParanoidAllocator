@@ -50,7 +50,15 @@
     if(beforeSize != afterSize) {
         char *afterPointer = NULL;
         if(afterSize > 0) {
-            CHECK(afterPointer = mmap(NULL, afterSize, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, 0, 0), == MAP_FAILED);
+            size_t guardPagesSize = _pageSize * 2;
+            size_t toAllocate = afterSize + guardPagesSize;
+            char *allocatedPointer;
+            CHECK(allocatedPointer = mmap(NULL, toAllocate, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, 0, 0), == MAP_FAILED);
+            
+            afterPointer = allocatedPointer + _pageSize;
+            
+            CHECK(mprotect(allocatedPointer, _pageSize, PROT_NONE), < 0);
+            CHECK(mprotect(afterPointer + afterSize, _pageSize, PROT_NONE), < 0);
         }
         
         if(beforeSize > 0 && afterSize > 0) {
@@ -60,7 +68,10 @@
         }
         
         if(beforeSize > 0) {
-            CHECK(munmap(_memory, beforeSize), < 0);
+            size_t guardPagesSize = _pageSize * 2;
+            size_t toDeallocate = beforeSize + guardPagesSize;
+            char *pointerWithGuards = _memory - _pageSize;
+            CHECK(munmap(pointerWithGuards, toDeallocate), < 0);
         }
         
         _memory = afterPointer;
