@@ -103,4 +103,26 @@ static BOOL Write(void *ptr, char value) {
     }];
 }
 
+- (void)testResizing {
+    long pageSize = sysconf(_SC_PAGESIZE);
+    unsigned short randBuf[3] = { 0, 0, 0 };
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: 1];
+    for(int i = 0; i < 1000; i++) {
+        size_t newSize = (nrand48(randBuf) % 1000000) + 1;
+        [allocator setSize: newSize];
+        [allocator read: ^(const void *ptr) {
+            XCTAssertEqual(Read(ptr), 0, @"Didn't get the expected value at the start of the allocation");
+            XCTAssertEqual(Read((const char *)ptr + newSize - 1), 0, @"Didn't get the expected value at the end of the allocation");
+            XCTAssertEqual(Read((const char *)ptr - 1), -1, @"Shouldn't be able to read before the allocation");
+            XCTAssertEqual(Read((const char *)ptr + newSize - 1 + pageSize), -1, @"Shouldn't be able to read after the allocation");
+        }];
+        [allocator write: ^(void *ptr) {
+            XCTAssertTrue(Write(ptr, 0), @"Couldn't write to the start of the allocation");
+            XCTAssertTrue(Write((char *)ptr + newSize - 1, 0), @"Couldn't write to the end of the allocation");
+            XCTAssertFalse(Write((char *)ptr - 1, 0), @"Shouldn't be able to write before the allocation");
+            XCTAssertFalse(Write((char *)ptr + newSize - 1 + pageSize, 0), @"Shouldn't be able to write past the end of the allocation");
+        }];
+    }
+}
+
 @end
