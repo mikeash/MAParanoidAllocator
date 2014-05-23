@@ -82,6 +82,11 @@
         
         [self mprotect: PROT_NONE];
     } else {
+        if (size < _size) {
+            [self write:^(void *ptr) {
+                memset((char *)ptr + size, 0, _size - size);
+            }];
+        }
         _size = size;
     }
 }
