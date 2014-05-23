@@ -43,9 +43,9 @@
     return _size;
 }
 
-- (void)setSize: (size_t)size {
+- (void)setSize: (size_t)newSize {
     size_t beforeSize = [self roundToPageSize: _size];
-    size_t afterSize = [self roundToPageSize: size];
+    size_t afterSize = [self roundToPageSize: newSize];
     
     if(beforeSize != afterSize) {
         char *afterPointer = NULL;
@@ -78,16 +78,16 @@
         }
         
         _memory = afterPointer;
-        _size = size;
+        _size = newSize;
         
         [self mprotect: PROT_NONE];
     } else {
-        if (size < _size) {
+        if (newSize < _size) {
             [self write:^(void *ptr) {
-                memset((char *)ptr + size, 0, _size - size);
+                memset((char *)ptr + newSize, 0, _size - newSize);
             }];
         }
-        _size = size;
+        _size = newSize;
     }
 }
 
