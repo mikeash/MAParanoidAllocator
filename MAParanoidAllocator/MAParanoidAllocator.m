@@ -24,7 +24,7 @@
 
 - (id)init {
     if((self = [super init])) {
-        _pageSize = sysconf(_SC_PAGESIZE);
+        CHECK(_pageSize = sysconf(_SC_PAGESIZE), < 0);
     }
     return self;
 }
