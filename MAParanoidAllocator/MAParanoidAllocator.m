@@ -9,9 +9,9 @@
 #import "MAParanoidAllocator.h"
 
 
-#define CHECK(x, failureCase) do { \
-        if((x) failureCase) { \
-            NSLog(@"%s: %s (%d)", #x, strerror(errno), errno); \
+#define CHECK(condition) do { \
+        if(condition) { \
+            NSLog(@"%s: %s (%d)", #condition, strerror(errno), errno); \
             abort(); \
         } \
     } while(0)
@@ -24,7 +24,7 @@
 
 - (id)init {
     if((self = [super init])) {
-        CHECK(_pageSize = sysconf(_SC_PAGESIZE), < 0);
+        CHECK((_pageSize = sysconf(_SC_PAGESIZE)) < 0);
     }
     return self;
 }
@@ -53,12 +53,12 @@
             size_t guardPagesSize = _pageSize * 2;
             size_t toAllocate = afterSize + guardPagesSize;
             char *allocatedPointer;
-            CHECK(allocatedPointer = mmap(NULL, toAllocate, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, 0, 0), == MAP_FAILED);
+            CHECK((allocatedPointer = mmap(NULL, toAllocate, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, 0, 0)) == MAP_FAILED);
             
             afterPointer = allocatedPointer + _pageSize;
             
-            CHECK(mprotect(allocatedPointer, _pageSize, PROT_NONE), < 0);
-            CHECK(mprotect(afterPointer + afterSize, _pageSize, PROT_NONE), < 0);
+            CHECK(mprotect(allocatedPointer, _pageSize, PROT_NONE) < 0);
+            CHECK(mprotect(afterPointer + afterSize, _pageSize, PROT_NONE) < 0);
         }
         
         if(beforeSize > 0 && afterSize > 0) {
@@ -74,7 +74,7 @@
             size_t guardPagesSize = _pageSize * 2;
             size_t toDeallocate = beforeSize + guardPagesSize;
             char *pointerWithGuards = _memory - _pageSize;
-            CHECK(munmap(pointerWithGuards, toDeallocate), < 0);
+            CHECK(munmap(pointerWithGuards, toDeallocate) < 0);
         }
         
         _memory = afterPointer;
@@ -106,7 +106,7 @@
 - (void)mprotect: (int)prot {
     size_t size = [self roundToPageSize: _size];
     if(size > 0) {
-        CHECK(mprotect(_memory, size, prot), < 0);
+        CHECK(mprotect(_memory, size, prot) < 0);
     }
 }
 
