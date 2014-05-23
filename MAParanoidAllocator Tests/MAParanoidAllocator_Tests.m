@@ -125,4 +125,19 @@ static BOOL Write(void *ptr, char value) {
     }
 }
 
+- (void)testNonReallocationResizeZeroing {
+    MAParanoidAllocator *allocator = [[MAParanoidAllocator alloc] initWithSize: 2];
+    [allocator write: ^(void *ptr) {
+        ((char *)ptr)[1] = 1;
+    }];
+    [allocator read: ^(const void *ptr) {
+        XCTAssertEqual(((const char *)ptr)[1], (char)1, @"Buffer should contain 1 after writing it");
+    }];
+    [allocator setSize: 1];
+    [allocator setSize: 2];
+    [allocator read: ^(const void *ptr) {
+        XCTAssertEqual(((const char *)ptr)[1], (char)0, @"Freshly resized buffer should contain zeroes");
+    }];
+}
+
 @end
